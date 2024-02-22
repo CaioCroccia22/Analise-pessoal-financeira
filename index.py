@@ -7,6 +7,8 @@ import plotly.express as px
 
 from app import *
 from components import sidebar
+from components import dashboards
+from components import extratos
 
 
 #: ===================== Layout ================ #
@@ -24,11 +26,27 @@ app.layout = dbc.Container(children=[
             # Instanciando component
             sidebar.layout
             # Nossa coluna vai ocupar 2 espaços de 12 do projeto
-        ], md = 2)
+        ], md = 2),
+        dbc.Col([
+            content
+        ], md = 10)
     ])
 
 
 
 
-
+# Estabeleceu que o layout é fluido ou seja ele se espalha na página
 ], fluid=True,)
+
+@app.callback(Output('page-content', 'children'), [Input('url', 'pathname')])
+def render_page(pathname):
+    if pathname = '/' or pathname == '/dashboard':
+        return dashboards.layout
+    
+    if pathname == '/extratos':
+        return extratos.layout
+    
+
+
+if __name__ == '__main__':
+    app.run_server(port=8051, dedug=True)

@@ -26,10 +26,10 @@ app.layout = dbc.Container(children=[
             # Instanciando component
             sidebar.layout
             # Nossa coluna vai ocupar 2 espaços de 12 do projeto
-        ], md = 2),
+        ], md = 2, style={'background-color': 'red', 'height': '1080px'}),
         dbc.Col([
             content
-        ], md = 10)
+        ], md = 10, style={'background-color': 'blue', 'height': '1080px'})
     ])
 
 

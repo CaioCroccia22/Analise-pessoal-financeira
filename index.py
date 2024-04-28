@@ -1,52 +1,20 @@
-from dash import html, dcc
-import dash 
-form dash.dependencies import Input, Output
-import dash._bootstrap_components as dbc
-import pandas as pd
-import plotly.express as px
+from tkinter import *
+from tkinter import ttk
 
-from app import *
-from components import sidebar
-from components import dashboards
-from components import extratos
+# Instancia da classe TK cria o interpretador e a janela raiz
+root = Tk()
 
 
-#: ===================== Layout ================ #
-# Pagina principal
-content = html.Div(id="Page-content")
+# Cria um frame widget
+frm = ttk.Frame(root, padding=500)
 
+# O metodo grid é utilizado para especificar o layout relativo
+frm.grid()
 
-#Layout principal do app
-app.layout = dbc.Container(children=[
-    # Abriu uma linha
-    dbc.Row([
-        # Abriu uma coluna para o projeto
-        dbc.Col([
-            dcc.Location(id='url'),
-            # Instanciando component
-            sidebar.layout
-            # Nossa coluna vai ocupar 2 espaços de 12 do projeto
-        ], md = 2, style={'background-color': 'red', 'height': '1080px'}),
-        dbc.Col([
-            content
-        ], md = 10, style={'background-color': 'blue', 'height': '1080px'})
-    ])
+# Cria o label
+ttk.Label(frm, text="Hello World!").grid(column=0, row=0)
 
+# Cria o button com metodo destroy que bota tudo na tela
+ttk.Button(frm, text="Quit", command=root.destroy).grid(column=0, row=1)
 
-
-
-# Estabeleceu que o layout é fluido ou seja ele se espalha na página
-], fluid=True,)
-
-@app.callback(Output('page-content', 'children'), [Input('url', 'pathname')])
-def render_page(pathname):
-    if pathname = '/' or pathname == '/dashboard':
-        return dashboards.layout
-    
-    if pathname == '/extratos':
-        return extratos.layout
-    
-
-
-if __name__ == '__main__':
-    app.run_server(port=8051, dedug=True)
+root.mainloop()
